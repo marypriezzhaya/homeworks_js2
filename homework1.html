@@ -32,16 +32,16 @@
 <script>
 
   function ChessBoard(board) {
-    var letters = ['A', 'B', 'C', 'D', 'E', 'G', 'H', 'I'];
+    var letters = ['', 'A', 'B', 'C', 'D', 'E', 'G', 'H', 'I'];
     this.render = function() {
       for (var i = 0; i < 9; i++) {
         var row = document.createElement('tr');
         for (var j = 0; j < 9; j++) {
           var cell = document.createElement('td');
           if (i == 0) {
-            cell.classlist.add('letter');
+            cell.classList.add('letter');
             cell.innerHTML = letters[j];
-          }
+          } else {
           if (j == 0) {
             cell.classList.add('number');
             cell.innerHtml = 'i';
@@ -52,14 +52,16 @@
               cell.classList.add('dark_cell');
             }
           }
-          row.appendChild('td');
-        }
-        board.appendChild('tr');
+            }
+          row.appendChild(cell);
+
+      }
+        board.appendChild(row);
       }
     }
   }
-  var board = new ChessBoard(document.getElementById('board'));
-  board.render;
+  var chess  = new ChessBoard(document.getElementById('board'));
+  chess.render();
 </script>
 
 
