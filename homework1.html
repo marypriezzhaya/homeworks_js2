@@ -13,7 +13,7 @@
       width: 100px;
     }
     .number {
-      width:50px;
+      width: 50px;
       height: 100px;
     }
     .board_cell {
@@ -21,7 +21,10 @@
       height: 100px;
     }
     .dark_cell {
-      background-color: #220;
+      background: #220;
+    }
+    .active {
+      border: 1px solid red;
     }
 
   </style>
@@ -39,14 +42,16 @@
         for (var j = 0; j < 9; j++) {
           var cell = document.createElement('td');
           if (i == 0) {
+            if ( j != 0 ){
             cell.classList.add('letter');
             cell.innerHTML = letters[j];
+          }
           } else {
-          if (j == 0) {
+          if (j == 0 ) {
             cell.classList.add('number');
-            cell.innerHtml = 'i';
+            cell.innerHTML = i;
           } else {
-            cell.id = i + '-' + j ;
+            cell.id = letters[j] + i;
             cell.classList.add('board_cell');
             if ((i + j) % 2 != 0) {
               cell.classList.add('dark_cell');
@@ -59,9 +64,38 @@
         board.appendChild(row);
       }
     }
+
+    this.setActive = function(coord) { // получаем координаты в шахматном формате.
+      var active = document.getElementsByClassName('active');
+      if(active[0] != undefined ) {
+      active[0].classList.remove('active');
+      }
+      var coordX = coord.charAt(0).toUpperCase(); // при текущем способе записи id можно и не делить на x и y, но пусть будет
+      var coordY = coord.charAt(1);
+      if (coordX >= 'A' && coordX < 'J' && coordY > 0 && coordY < 9) {
+        active = document.getElementById(coordX + coordY); // получаем ячейку таблицы с этими координатами
+        active.classList.add('active');
+      } else {
+        console.log('It is somewhere outside the board' )
+      }
+    }
+    this.getActive = function () {
+      var active = document.getElementsByClassName('active')[0];
+      console.log(active.id)
+      return active.id;
+    }
+
+    this.addEventListener = function(){
+      board.addEventListener('click', this.getActive);
+
+    }
   }
+
+
   var chess  = new ChessBoard(document.getElementById('board'));
   chess.render();
+  chess.setActive('e2');
+  chess.addEventListener();
 </script>
 
 
