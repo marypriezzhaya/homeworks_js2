@@ -3,6 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Homework 1</title>
+  <style>
+    #board {
+      background: #FFE;
+      color: #220;
+    }
+    .letter {
+      height: 50px;
+      width: 100px;
+    }
+    .number {
+      width:50px;
+      height: 100px;
+    }
+    .board_cell {
+      width: 100px;
+      height: 100px;
+    }
+    .dark_cell {
+      background-color: #220;
+    }
+
+  </style>
 </head>
 <body>
   <table id="board"></table>
@@ -10,7 +32,7 @@
 <script>
 
   function ChessBoard(board) {
-    var letters = ['A', 'B', 'C', 'D', 'E', 'G', 'H', 'I']
+    var letters = ['A', 'B', 'C', 'D', 'E', 'G', 'H', 'I'];
     this.render = function() {
       for (var i = 0; i < 9; i++) {
         var row = document.createElement('tr');
@@ -18,13 +40,17 @@
           var cell = document.createElement('td');
           if (i == 0) {
             cell.classlist.add('letter')
-            cell.innerHTML = 
+            cell.innerHTML = letters[j];
           }
           if (j == 0) {
             cell.classList.add('number');
-            cell.innerHtml = "i";
+            cell.innerHtml = 'i';
           } else {
-            cell.id = i "-" j;
+            cell.id = 'i '-' j';
+            cell.classList.add('board_cell');
+            if ((i + j) % 2 != 0) {
+              cell.classList.add('dark_cell');
+            }
           }
           row.apendChild('td');
         }
@@ -32,7 +58,7 @@
       }
     }
   }
-  var board = new CreateBoard(document.getElementById('board'));
+  var board = new ChessBoard(document.getElementById('board'));
 </script>
 
 
