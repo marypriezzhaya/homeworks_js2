@@ -39,7 +39,7 @@
         for (var j = 0; j < 9; j++) {
           var cell = document.createElement('td');
           if (i == 0) {
-            cell.classlist.add('letter')
+            cell.classlist.add('letter');
             cell.innerHTML = letters[j];
           }
           if (j == 0) {
@@ -52,9 +52,9 @@
               cell.classList.add('dark_cell');
             }
           }
-          row.apendChild('td');
+          row.appendChild('td');
         }
-        board.apendChild('tr');
+        board.appendChild('tr');
       }
     }
   }
