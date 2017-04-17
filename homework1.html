@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Homework 1</title>
+</head>
+<body>
+  <table id="board"></table>
+
+<script>
+
+  function ChessBoard(board) {
+    var letters = ['A', 'B', 'C', 'D', 'E', 'G', 'H', 'I']
+    this.render = function() {
+      for (var i = 0; i < 9; i++) {
+        var row = document.createElement('tr');
+        for (var j = 0; j < 9; j++) {
+          var cell = document.createElement('td');
+          if (i == 0) {
+            cell.classlist.add('letter')
+            cell.innerHTML = 
+          }
+          if (j == 0) {
+            cell.classList.add('number');
+            cell.innerHtml = "i";
+          } else {
+            cell.id = i "-" j;
+          }
+          row.apendChild('td');
+        }
+        board.apendChild('tr');
+      }
+    }
+  }
+  var board = new CreateBoard(document.getElementById('board'));
+</script>
+
+
+</body>
+</html>
