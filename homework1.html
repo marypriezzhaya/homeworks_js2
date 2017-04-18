@@ -85,8 +85,8 @@
       return active.id;
     }
 
-    this.addEventListener = function(){
-      board.addEventListener('click', this.getActive);
+    this.addEventListener = function(name, somefunc){
+      board.addEventListener(name, somefunc);
 
     }
   }
@@ -95,7 +95,7 @@
   var chess  = new ChessBoard(document.getElementById('board'));
   chess.render();
   chess.setActive('e2');
-  chess.addEventListener();
+  chess.addEventListener('click', chess.getActive);
 </script>
 
 
